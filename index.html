@@ -1,91 +1,114 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Portfolyom</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: white;
-        }
+<meta charset="UTF-8">
+<title>Portfolyom</title>
 
-        .container {
-            text-align: center;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        height: 100vh;
+        overflow: hidden;
 
-        img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid white;
-            margin-bottom: 20px;
-        }
+        /* ANİMASYONLU PEMBE-MOR ARKA PLAN */
+        background: linear-gradient(-45deg, #ff4d88, #a64dff, #ff99cc, #cc66ff);
+        background-size: 400% 400%;
+        animation: gradientBG 10s ease infinite;
+    }
 
-        h1 {
-            margin-bottom: 30px;
-        }
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 
-        .btn {
-            display: block;
-            margin: 10px auto;
-            padding: 12px 25px;
-            width: 220px;
-            text-decoration: none;
-            color: white;
-            background: rgba(255,255,255,0.2);
-            border-radius: 25px;
-            transition: 0.3s;
-            font-weight: bold;
-        }
+    /* MOUSE IŞIK EFEKTİ */
+    .light {
+        position: fixed;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        pointer-events: none;
+        background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        mix-blend-mode: screen;
+    }
 
-        .btn:hover {
-            background: white;
-            color: #ff4d88;
-            transform: scale(1.1);
-            box-shadow: 0 0 15px white;
-        }
+    .container {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: white;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 
-        /* Parlama animasyonu */
-        .btn::after {
-            content: "";
-            display: block;
-            width: 0%;
-            height: 2px;
-            background: white;
-            transition: 0.4s;
-            margin: auto;
-        }
+    img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        border: 4px solid white;
+        margin-bottom: 20px;
+        box-shadow: 0 0 25px rgba(255,255,255,0.7);
+    }
 
-        .btn:hover::after {
-            width: 100%;
-        }
-    </style>
+    h1 {
+        margin-bottom: 30px;
+        text-shadow: 0 0 10px white;
+    }
+
+    .btn {
+        display: block;
+        margin: 15px auto;
+        padding: 14px 30px;
+        width: 240px;
+        text-decoration: none;
+        color: white;
+        background: rgba(255,255,255,0.15);
+        border-radius: 30px;
+        backdrop-filter: blur(10px);
+        transition: 0.3s;
+        font-weight: bold;
+        box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    .btn:hover {
+        background: white;
+        color: #ff4d88;
+        transform: scale(1.1);
+        box-shadow: 0 0 25px white;
+    }
+
+</style>
 </head>
+
 <body>
+
+<!-- MOUSE IŞIK -->
+<div class="light" id="light"></div>
 
 <div class="container">
 
-    <!-- PROFİL FOTOĞRAFI -->
-    <img src="image.png.jpeg" alt="Profil Fotoğrafı">
+    <!-- PROFİL FOTO -->
+    <img src="image.png.jpeg">
 
     <h1>Rüveyda'nın Portfolyosu</h1>
 
-    <!-- CSV DOSYASI -->
     <a class="btn" href="data.csv" target="_blank">CSV Dosyam</a>
-
-    <!-- UYGULAMA -->
     <a class="btn" href="not uygulaması.html" target="_blank">Uygulamam</a>
-
-    <!-- GRAFİK -->
     <a class="btn" href="visual_analysis.png" target="_blank">Grafiklerim</a>
 
 </div>
+
+<script>
+    const light = document.getElementById("light");
+
+    document.addEventListener("mousemove", (e) => {
+        light.style.left = e.clientX + "px";
+        light.style.top = e.clientY + "px";
+    });
+</script>
 
 </body>
 </html>
