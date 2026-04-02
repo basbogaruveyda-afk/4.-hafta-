@@ -5,97 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dijital Deneyim Laboratuvarı</title>
     <style>
-        /* Arka plan ve genel stil */
+        /* Arka plan: Koyu ve modern */
         body {
             margin: 0;
-            background-color: #0a0a0a;
-            color: #fff;
-            font-family: 'Segoe UI', sans-serif;
+            padding: 0;
+            background: radial-gradient(circle, #1a1a2e 0%, #0f0c29 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            text-align: center;
         }
 
-        /* Profil Fotoğrafı */
-        .profile-pic {
-            width: 140px;
-            height: 140px;
+        /* Profil resmi çerçevesi ve parlama */
+        .profile-box {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 3px solid #ff007f;
-            box-shadow: 0 0 20px #ff007f;
-            object-fit: cover;
+            border: 4px solid #ff00ff;
+            box-shadow: 0 0 20px #ff00ff, inset 0 0 10px #ff00ff;
             margin-bottom: 20px;
+            overflow: hidden;
+            background: #222;
+        }
+
+        .profile-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         h1 {
-            font-size: 24px;
-            color: #ff007f;
-            text-shadow: 0 0 10px #ff007f;
-            margin-bottom: 30px;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+            margin: 10px 0 40px 0;
         }
 
-        /* Buton Grubu */
-        .links {
+        /* Buton Konteynırı */
+        .nav-links {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            width: 250px;
+            gap: 20px;
+            width: 280px;
         }
 
-        /* Parlayan ve Renk Geçişli Butonlar */
+        /* Hareketli ve Renkli Butonlar */
         .btn {
-            text-decoration: none;
-            color: white;
-            padding: 12px;
-            text-align: center;
-            border: 2px solid #ff007f;
-            border-radius: 10px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-            transition: 0.3s;
             position: relative;
+            padding: 15px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            border: 2px solid #ff00ff;
+            border-radius: 30px;
+            background: rgba(255, 0, 255, 0.05);
+            transition: 0.4s all;
             overflow: hidden;
+            display: block;
         }
 
-        /* Hareket ve Parlama Efekti */
+        /* Parlama ve Hareket Efekti */
         .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px #ff007f;
-            background: #ff007f;
+            background: #ff00ff;
             color: #000;
+            box-shadow: 0 0 30px #ff00ff;
+            transform: translateY(-3px);
         }
 
-        /* Işık Süzmesi (Parlayarak geçiş) */
-        .btn::after {
+        /* Butonun içinden geçen ışık süzmesi */
+        .btn::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -60%;
-            width: 20%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: rotate(30deg);
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             transition: 0.5s;
         }
 
-        .btn:hover::after {
-            left: 120%;
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #ff00ff;
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
 
-    <img src="resim.jpeg" alt="Profil" class="profile-pic">
+    <div class="profile-box">
+        <img src="resim.jpeg" alt="Profil">
+    </div>
 
     <h1>Dijital Deneyim Laboratuvarı</h1>
 
-    <div class="links">
-        <a href="veri.csv" class="btn" target="_blank">VERİ SETİ (CSV)</a>
-        <a href="grafik.png" class="btn" target="_blank">GRAFİKLERİ GÖR</a>
+    <div class="nav-links">
+        <a href="veri.csv" class="btn">VERİ SETİ (CSV)</a>
+        <a href="grafik.png" class="btn">GRAFİKLER</a>
         <a href="not.html" class="btn">UYGULAMAYA GİT</a>
     </div>
+
+    <footer>&copy; 2026 | Tasarım Laboratuvarı</footer>
 
 </body>
 </html>
